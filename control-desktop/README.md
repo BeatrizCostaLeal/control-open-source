@@ -19,6 +19,8 @@ Repositório do projeto Control Desktop
 
 ### Executando a aplicação
 
+> Considere que o código fonte do projeto está localizado na pasta `projeto`, selecione a pasta projeto para importar via maven em sua IDE.
+
 Para executar a aplicação é simples, basta abrir a classe `ControlDesktopApplication` e ativar  `run` ou `debug` em sua IDE.
 
 Confirme a url da api back-end em resources `application.properties`
