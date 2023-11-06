@@ -130,11 +130,10 @@ Estando tudo certinho conforme log abaixo, basta acessar o link: `http://localho
 ```
 
 ### UML
-
-![](prints/uml.png "UML")
+![](https://github.com/glysns/control-api-desktop/blob/main/prints/uml.png)
 
 ### Swagger
 
-![](prints/swagger.png "API")
+![](https://github.com/glysns/control-api-desktop/blob/main/prints/swagger.png)
 
 
