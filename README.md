@@ -20,9 +20,12 @@ Se você tiver alguma dificuldade em importar projeto maven com a sua IDE, veja 
 * [Maven + Eclipse](https://www.youtube.com/watch?v=WEKB_fFkubc&list=PL8NbPylKQ8Nkn0oj2ymY2jVMo5ZlmDZ20&index=11)
 * [Maven + VSCode](https://www.youtube.com/watch?v=ofvpV085wMw&list=PL8NbPylKQ8Nkn0oj2ymY2jVMo5ZlmDZ20&index=12)
 
-#### Incentive novos conteúdos ...
+#### Incentive novos conteúdos :coffee: :rocket: :heart_eyes::heart:
 
 ![](https://github.com/glysns/control-api-desktop/blob/main/prints/pix-cafezinho-gleyson-200.jpg)
+
+Gleyson Sampaio
+NuBank
   
   
   
