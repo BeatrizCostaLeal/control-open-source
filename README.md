@@ -22,7 +22,7 @@ Se você tiver alguma dificuldade em importar projeto maven com a sua IDE, veja 
 
 #### Incentive novos conteúdos ...
 
-![](https://github.com/glysns/control-api-desktop/blob/main/prints/pix-cafezinho-gleyson.jpg)
+![](https://github.com/glysns/control-api-desktop/blob/main/prints/pix-cafezinho-gleyson-200.jpg)
   
   
   
