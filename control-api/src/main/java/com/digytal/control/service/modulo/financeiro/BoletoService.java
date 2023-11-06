@@ -96,8 +96,6 @@ public class BoletoService {
             boleto.setUrlImpressao(response.getBankSlipUrl());
             parcelaRepository.save(parcela);
         }
-        System.out.println(response);
-
         return response;
     }
     /*
