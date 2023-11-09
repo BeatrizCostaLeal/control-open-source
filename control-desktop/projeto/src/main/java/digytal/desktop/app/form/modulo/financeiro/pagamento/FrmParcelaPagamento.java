@@ -163,11 +163,15 @@ public class FrmParcelaPagamento extends Formulario {
 				try {
 
 					if (parcelaResponse.getBoleto().getNumeroAutorizacao() != null) {
-						if (SSMensagem
-								.pergunta("Já existe um boleto vinculado a esta parcela, deseja gerar um novo boleto?"))
+						/*
+						if ()
 							gerarExibirBoleto();
 						else
+						*/
+							
+						if(SSMensagem.pergunta("Já existe um boleto vinculado a esta parcela, deseja imprimir?"))
 							openWebpage(new URL(parcelaResponse.getBoleto().getUrlImpressao()).toURI());
+					
 					} else {
 						gerarExibirBoleto();
 					}

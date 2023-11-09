@@ -109,6 +109,8 @@ public class FrmContratoVendaServico extends Formulario {
 
 	private ContratoRequest contrato;
 	private ContratoItemRequest item;
+	@Autowired
+	private ProdutoService produtoService;
 	private ContratoTipo tipo;
 
 	public FrmContratoVendaServico() {
@@ -611,7 +613,6 @@ public class FrmContratoVendaServico extends Formulario {
 
 	}
 
-	// etapa de adicao do item na lista
 	private void localizarCliente() {
 		cCliente.setText("");
 		cNomeCliente.setText("**CLIENTE NAO INFORMADO**");
@@ -624,15 +625,14 @@ public class FrmContratoVendaServico extends Formulario {
 			String cpfCnpj = SSFormatador.formatarCpfCnpj(cliente.getCpfCnpj());
 			cNomeCliente.setText(cpfCnpj + " - " + cliente.getNomeFantasia());
 			cItem.requestFocus();
-			// venda.setCadastro(cliente.getId());
+			contrato.setCadastro(cliente.getId());
 		}
 	}
 	
-	@Autowired
-	private ProdutoService produtoService;
+	
 	private void buscarProduto() {
 		ProdutoResponse produto=null;
-		if(cItem!=null) {
+		if(cItem.getText()!=null && !cItem.getText().isEmpty()) {
 			Integer id = Integer.valueOf(cItem.getText());
 			produto = produtoService.buscar(id);
 		}
@@ -851,9 +851,10 @@ public class FrmContratoVendaServico extends Formulario {
 					}else
 						return;
 				}
-				contrato.setCadastro(1);
+				String descricao = tipo==ContratoTipo.VENDA ? "Venda\\\\Servico" : "Compra";
 				contrato.setData(LocalDate.now());
-				contrato.setDescricao("Venda\\Servico");
+				contrato.setDescricao(descricao);
+				
 				Response<Integer> response = service.gerarContratoVenda(contrato);
 
 				SSMensagem.informa(response.getStatus().getMessage());

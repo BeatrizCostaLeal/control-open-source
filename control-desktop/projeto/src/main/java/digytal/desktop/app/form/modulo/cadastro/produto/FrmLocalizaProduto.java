@@ -83,8 +83,8 @@ public class FrmLocalizaProduto extends FormularioLocaliza {
 		getTabela().adicionarColuna(2, "UND", "unidadeMedida.abreviacao");
 		getTabela().adicionarColuna(3, "R$ Valor", "valor");
 		
-		getTabela().getModeloColuna().setFormato(2, Formato.MOEDA);
-		getTabela().definirLarguraColunas(30, 230,60, 85);
+		getTabela().getModeloColuna().setFormato(3, Formato.MOEDA);
+		getTabela().definirLarguraColunas(30, 180,40, 85);
 		
 		super.setAlinhamentoBotoes(FlowLayout.RIGHT);
 		//super.setFiltros(pFiltros, 1, 0);

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import digytal.desktop.app.component.PainelEmpresaConta;
+import digytal.desktop.app.component.PainelEmpresaIntegracao;
 import digytal.desktop.app.context.Context;
 import digytal.desktop.app.form.modulo.cadastro.FrmCadastro;
 import digytal.desktop.app.model.modulo.acesso.empresa.EmpresaRequest;
@@ -23,12 +24,14 @@ import digytal.desktop.util.utils.http.Response;
 public class FrmEmpresaCadastro extends FrmCadastro {
 	private static final Logger LOGGER = LogManager.getLogger(FrmEmpresaCadastro.class);
 	private PainelEmpresaConta painelEmpresaConta = new PainelEmpresaConta();
+	private PainelEmpresaIntegracao painelEmpresaIntegracao = new PainelEmpresaIntegracao();
 	@Autowired
 	private EmpresaService service;
 	public FrmEmpresaCadastro() {
 		setTitulo("Empresa");
 		setDescricao("Cadastro das empresas do sistema");
 		adicionarTab("Contas", painelEmpresaConta);
+		adicionarTab("Asaas", painelEmpresaIntegracao);
 	}
 	@Override
 	public void exibirRegistro(Object registro) {

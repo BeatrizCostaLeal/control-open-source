@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import digytal.desktop.app.context.Context;
-import digytal.desktop.app.form.modulo.cadastro.produto.FrmProdutoCadastro;
 import digytal.desktop.app.model.modulo.cadastro.produto.marca.MarcaResponse;
 import digytal.desktop.app.service.modulo.cadastro.produto.MarcaService;
 import digytal.desktop.components.desktop.FormularioConsulta;
@@ -32,10 +31,8 @@ public class FrmMarcaConsulta extends FormularioConsulta {
 	private MarcaService service;
 	private SSCampoTexto cNome = new SSCampoTexto();
 	public FrmMarcaConsulta() {
-		setTitulo("Produtos e Serviços");
-		setDescricao("Listagem de Produtos e Serviços");
-		
-		
+		setTitulo("Marcas");
+		setDescricao("Listagem das Marcas de Produtos");
 		
 		JPanel filtros = new JPanel(new GridBagLayout());
 		GridBagConstraints gbc_cNome = new GridBagConstraints();
@@ -46,8 +43,6 @@ public class FrmMarcaConsulta extends FormularioConsulta {
 		gbc_cNome.gridx = 0;
 		gbc_cNome.gridy = 0;
 		filtros.add(cNome, gbc_cNome);
-		
-		
 		
 		filtros.add(bBuscar, getGbcBuscar(1, 0));
 		

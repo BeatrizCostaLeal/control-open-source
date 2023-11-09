@@ -31,4 +31,13 @@ public class EmpresaService extends HttpClient  {
 	public Response incluir(EmpresaRequest request) throws BusinessException {
         return post(request).body();
     }
+	public Response alterarAsaasToken(String token) throws BusinessException {
+        return patch(null,"asaas","token",token).body();
+    }
+	public Response alterarAsaasWebhookToken(String token) throws BusinessException {
+        return patch(null,"asaas","webhook-token",token).body();
+    }
+	public Response alterarAsaasTaxaBoleto(Double taxaBoleto) throws BusinessException {
+		return patch(null,"asaas","taxa-boleto",taxaBoleto).body();
+    }
 }

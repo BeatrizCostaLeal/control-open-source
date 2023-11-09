@@ -18,7 +18,7 @@ public class ControlDesktopApplication {
 		try {
 			String lf = UIManager.getSystemLookAndFeelClassName();
 			UIManager.setLookAndFeel(lf);
-			Context.showSplash("Control Click - 06/11/23");
+			Context.showSplash("Control Click - 09/11/23 12:40 - Asaas - WebHook");
 			SpringApplication.run(ControlDesktopApplication.class, args);
 			Context.closeSplash();
 		} catch (Exception e) {

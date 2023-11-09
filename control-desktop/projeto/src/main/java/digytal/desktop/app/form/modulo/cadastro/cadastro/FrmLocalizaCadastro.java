@@ -36,6 +36,8 @@ public class FrmLocalizaCadastro extends FormularioLocaliza {
 	}
 
 	private void init() {
+		setTitulo("Localiza Cadastro");
+		setDescricao("Filtro dos cadastros no sistema");
 		cNome.setRotulo("Nome");
 		cNome.setColunas(20);
 		cNome.setRotuloPosicao(SSPosicaoRotulo.ESQUERDA);
