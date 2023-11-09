@@ -27,24 +27,15 @@ public class ParcelamentoResource {
         service.realizarCompensacao(id,request);
         return ResponseFactory.create(true,"Pagamento realizado com sucesso");
     }
-    /*
-    @PatchMapping("/{id}/parcelas/{parcelaId}/correcao")
-    @ResponseStatus( HttpStatus.CREATED )
-    public Response realizarCorrecaoMonetariaManual(@PathVariable("id") Integer id, @PathVariable("parcelaId") Integer parcelaId, @RequestBody ParcelamentoParcelaCorrecaoRequest request){
-        service.realizarCorrecaoMonetariaManual(id,parcelaId, request);
-        return ResponseFactory.create(true,"Parcela corrigida com sucesso");
-    }
-    //@PatchMapping("/parcelas/{parcela}/valor/{valorBoleto/vencimento/{novoVencimento}")
-    public Response gerarBoleto(@PathVariable("parcela") Integer parcela, @PathVariable("valorBoleto") Double valorBoleto, @PathVariable("novoVencimento") LocalDate novoVencimento ){
-        BoletoResponse response= boletoService.gerarBoleto(parcela, valorBoleto, novoVencimento);
-        return ResponseFactory.create(response,"Solicitação realizada com sucesso");
-    }
-
-     */
     @PatchMapping("/parcelas/{parcela}/valor/{valorBoleto}/boleto")
     public Response gerarBoleto(@PathVariable("parcela") Integer parcela, @PathVariable("valorBoleto") Double valorBoleto){
         BoletoResponse response = boletoService.gerarBoleto(parcela, valorBoleto);
         return ResponseFactory.create(response,"Solicitação realizada com sucesso");
+    }
+    @PatchMapping("/parcelas/{parcela}/pagamento-boleto")
+    public Response compensarBoleto(@PathVariable("parcela") Integer parcela){
+        boletoService.compensar(parcela);
+        return ResponseFactory.ok(true,"Solicitação de compensação de pagamento realizada com sucesso");
     }
 
 }

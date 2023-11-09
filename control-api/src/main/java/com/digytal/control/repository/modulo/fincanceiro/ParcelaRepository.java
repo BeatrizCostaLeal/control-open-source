@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ParcelaRepository extends JpaRepository<ParcelaEntity, Integer> {
-    @Query("SELECT e FROM ParcelaEntity e WHERE e.boleto.solicitado=true AND e.boleto.status='E' and e.detalhe.dataVencimento <= :dataVencimento ")
-    List<ParcelaEntity> listarParcelasPendentesPagamento(@Param("dataVencimento") LocalDate dataVencimento);
+    @Query("SELECT e FROM ParcelaEntity e WHERE e.boleto.solicitado=true AND e.boleto.status='E' and e.detalhe.dataVencimento BETWEEN :dataInicial AND :dataFinal ")
+    List<ParcelaEntity> listarParcelasBoleto(@Param("dataInicial") LocalDate dataInicial,@Param("dataFinal") LocalDate dataFinal);
+
+    ParcelaEntity findByBoletoNumeroAutorizacao(String numeroAutorizacao);
 }

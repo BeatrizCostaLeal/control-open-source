@@ -109,13 +109,14 @@ public abstract class ContratoService extends AbstractService {
     @Autowired
     private TransacaoService transacaoService;
     private void processarTransacao(AplicacaoTipo tipo, ContratoRequest request){
+        String titulo = tipo ==AplicacaoTipo.RECEITA ? "Venda \\ Serviço" : "Outros";
         TransacaoRequest transacao = new TransacaoRequest();
         transacao.setData(request.getData());
         transacao.setValor(request.getValorAplicado());
         transacao.setCadastro(request.getCadastro());
-        transacao.setDescricao("Venda \\ Serviço");
+        transacao.setDescricao(titulo);
         transacao.setObservacao("");
-        transacao.setTitulo("Venda \\ Serviço");
+        transacao.setTitulo(titulo);
         transacao.setFormasPagamento(request.getFormasPagamento());
         transacaoService.incluir(tipo,transacao);
     }

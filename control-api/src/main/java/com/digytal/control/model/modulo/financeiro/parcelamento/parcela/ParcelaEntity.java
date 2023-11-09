@@ -1,6 +1,7 @@
 package com.digytal.control.model.modulo.financeiro.parcelamento.parcela;
 
 import com.digytal.control.model.modulo.financeiro.parcelamento.ParcelamentoDetalhe;
+import com.digytal.control.model.modulo.financeiro.parcelamento.Quitacao;
 import com.digytal.control.model.modulo.financeiro.parcelamento.boleto.ParcelaBoleto;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -24,7 +25,7 @@ public class ParcelaEntity {
     @Embedded
     private PacelaPendencia pendencia = new PacelaPendencia();
     @Embedded
-    private ParcelaQuitacao quitacao = new ParcelaQuitacao();
+    private Quitacao quitacao = new Quitacao();
     @Embedded
     private ParcelaBoleto boleto = new ParcelaBoleto();
     @Column(name = "parc_lancto_id", insertable = false, updatable = false)

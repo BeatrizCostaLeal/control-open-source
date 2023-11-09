@@ -5,6 +5,7 @@ public enum Attributes {
     ID("id","Id"),
     UNID_EMBALAGEM("unidadeEmbalagem","Embalagem do produto"),
     CODIGO_BARRAS("codigoBarras","Código de Barras"),
+    NUMERO_AUTORIZACAO("numeroAutorizacao","Número de Autorização"),
     SKU("sku","Unidade de Manutenção de Estoque"),
     NOME_ABREVIADO("nomeAbreviado","Nome abreviado"),
     USUARIO_AULA("usuarioAula","Registro Início Aula"),

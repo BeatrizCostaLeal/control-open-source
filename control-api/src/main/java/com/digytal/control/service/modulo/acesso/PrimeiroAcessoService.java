@@ -118,8 +118,8 @@ public class PrimeiroAcessoService extends CadastroFactory {
         entity.setEmpresa(empresa);
         entity.setAgencia("AG02-0");
         entity.setNumero("CC02-0");
-        entity.setLegenda("CONTA BANCO (conta digital)");
-        entity.setDescricao("Conta destinada as movimentações financeiras de meio de pagamento como PIX, DEBITO, CREDITO, BOLETO");
+        entity.setLegenda("Conta Banco (conta digital)");
+        entity.setDescricao("Conta destinada as movimentações financeiras de meio de pagamento como PIX, DEBITO, CREDITO, BOLETO, PRAZO");
         contaRepository.save(entity);
         cadastrarContasDigitaisPagamento(entity.getId(), empresa);
     }
@@ -131,6 +131,7 @@ public class PrimeiroAcessoService extends CadastroFactory {
         formaPagamentoRepository.save(forma(MeioPagamento.DEBITO, conta, empresa));
         formaPagamentoRepository.save(forma(MeioPagamento.CREDITO, conta, empresa));
         formaPagamentoRepository.save(forma(MeioPagamento.PRAZO, conta, empresa));
+        formaPagamentoRepository.save(forma(MeioPagamento.BOLETO, conta, empresa));
     }
     private FormaPagamentoEntity forma(MeioPagamento meioPagamento, Integer conta, Integer empresa){
         FormaPagamentoEntity entity = new FormaPagamentoEntity();

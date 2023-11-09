@@ -5,8 +5,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 //https://medium.com/@andylke/rest-controller-configure-date-time-format-in-json-response-201e97aa74b0
 //https://www.baeldung.com/spring-boot-customize-jackson-objectmapper
@@ -28,6 +30,15 @@ public class GlobalConfiguration   {
         instance.registerModule(new Jdk8Module());
         return instance;
     }
+    /*
+    @Bean
+    @Qualifier("employeeServiceB")
+    @Scope("prototype")
+    public EmployeeService employeeServiceB() {
+        new EmployeeService();
+    }
+
+     */
 
      /*
     @Override

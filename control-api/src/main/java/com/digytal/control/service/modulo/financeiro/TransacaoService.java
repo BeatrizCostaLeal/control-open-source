@@ -88,7 +88,7 @@ public  class TransacaoService extends AbstractService {
             rateio.setValorOriginal(Calculos.seNuloOuZero(rateio.getValorOriginal(), rateio.getValorPago()));
             rateio.setTaxaPagamento(Calculos.seNuloZera(rateio.getTaxaPagamento()));
             if (rateio.getMeioPagamento().isInstantaneo()) {
-                entity.getPagamentos().add(pagamentoService.criarPagamento(tipo, cadastro, rateio, entity.getTitulo()));
+                entity.getPagamentos().add(pagamentoService.criarPagamento(tipo, cadastro, rateio, entity.getTitulo(),entity.getPartes().getEmpresa()));
             }else{
                 entity.getParcelamentos().add(parcelamentoService.criarParcelamento(tipo, cadastro, rateio,entity.getTitulo()));
             }

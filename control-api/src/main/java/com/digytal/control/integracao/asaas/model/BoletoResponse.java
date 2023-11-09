@@ -12,6 +12,7 @@ public class BoletoResponse extends BoletoRequest{
     private String nossoNumero;
     private boolean deleted;
     private Double netValue;
+    private String billingType;
     //data de pagamento
     private LocalDate clientPaymentDate;
     //data de compensacao

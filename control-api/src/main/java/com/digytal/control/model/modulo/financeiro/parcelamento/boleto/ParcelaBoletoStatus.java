@@ -9,7 +9,7 @@ public enum ParcelaBoletoStatus implements EnumerateId {
     SOLICITADO("S","Solicitado"),
     EMITIDO("E","Emitido"),
     PAGO ("P","Pago"),
-    RECUSADO("R","Recursado"),
+    RECUSADO("R","Recusado"),
     CANCELADO("C","Cancelado");
     private String id;
     private String descricao;

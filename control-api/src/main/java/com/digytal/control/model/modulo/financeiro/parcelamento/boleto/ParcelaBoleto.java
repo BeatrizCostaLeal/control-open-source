@@ -11,6 +11,10 @@ import java.time.LocalDate;
 public class ParcelaBoleto {
     @Column(name = "bol_is_solicitado")
     private boolean solicitado;
+    @Column(name = "bol_repasse_tipo")
+    private String tipoRepasse;
+    @Column(name = "bol_is_repasse_confirmado")
+    private boolean repasseConfirmado;
     @Column(name = "bol_status")
     private ParcelaBoletoStatus status ;
     @Column(name = "bol_nr_autorizacao")
@@ -19,8 +23,16 @@ public class ParcelaBoleto {
     private String urlImpressao;
     @Column(name = "bol_linha_digitavel")
     private String linhaDigitavel;
+    @Column(name = "bol_vl_original")
+    private Double valorOriginal;
+    @Column(name = "bol_vl_tx_impressao")
+    private Double valorTaxaImpressao;
+    @Column(name = "bol_vl_impresso")
+    private Double valorImpresso;
     @Column(name = "bol_vl_compensado")
     private Double valorCompensado;
+    @Column(name = "bol_tipo_compensacao")
+    private String tipoCompensacao;
     @Column(name = "bol_dt_pagamento")
     private LocalDate dataPagamento;
     @Column(name = "bol_dt_compensacao")

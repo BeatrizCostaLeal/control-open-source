@@ -1,4 +1,4 @@
-package com.digytal.control.model.modulo.financeiro.parcelamento.parcela;
+package com.digytal.control.model.modulo.financeiro.parcelamento;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Embeddable
 @Data
-public class ParcelaQuitacao {
+public class Quitacao {
     @Column(name = "quit_is_efetuada")
     private boolean efetuada;
     @Column(name = "quit_data")

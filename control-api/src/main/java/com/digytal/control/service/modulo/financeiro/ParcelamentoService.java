@@ -131,13 +131,16 @@ public class ParcelamentoService extends AbstractService {
         if(!meioPagamento.isInstantaneo())
             throw new RegistroIncompativelException("O Meio de Pagamento selecionado não pode ser utilizado para a confirmação do pagamento");
 
-        FormaPagamentoEntity formaPagamento = consultarFormaPagamento(meioPagamento);
 
         ParcelaEntity parcela = parcelaRepository.findById(id)
                 .orElseThrow(() -> new RegistroNaoLocalizadoException(Entities.PARCELA, ID));
 
         ParcelamentoEntity parcelamento = parcelamentoRepository.findById(parcela.getParcelamento())
                 .orElseThrow(() -> new RegistroNaoLocalizadoException(Entities.LANCAMENTO, ID));
+
+
+        TransacaoEntity transacao = globalRepository.findById(TransacaoEntity.class, parcelamento.getTransacao());
+        FormaPagamentoEntity formaPagamento = consultarFormaPagamento(transacao.getPartes().getEmpresa(), meioPagamento);
 
         if(parcelamento.getMeioPagamento()== MeioPagamento.CREDITO)
             throw new RegistroIncompativelException("Não é permitida a compensão manual de parcela de Cartão de Crédito");
@@ -178,7 +181,7 @@ public class ParcelamentoService extends AbstractService {
         parcela.getQuitacao().setData(parcela.getQuitacao().isEfetuada()?LocalDate.now():null);
         parcelaRepository.save(parcela);
 
-        TransacaoEntity transacao = globalRepository.findById(TransacaoEntity.class, parcelamento.getTransacao());
+
         FormaPagamentoRequest rateio = new FormaPagamentoRequest();
         rateio.setTaxaPagamento(0.0);
         rateio.setValorPago(request.getValor());
@@ -186,7 +189,7 @@ public class ParcelamentoService extends AbstractService {
         rateio.setMeioPagamento(request.getMeioPagamento());
 
         String descricao = String.format("%s Prct/Prcl %d/%d", (transacao.getTipo() == AplicacaoTipo.DESPESA?"Pagto.":"Recto."), parcelamento.getId(), parcela.getDetalhe().getNumeroParcela());
-        pagamentoService.criarPagamentoParcelamento(transacao.getTipo(), rateio, descricao,parcelamento.getId(), transacao );
+        pagamentoService.criarPagamentoParcelamento(transacao.getTipo(), rateio, descricao,parcelamento.getId(), transacao);
 
     }
 

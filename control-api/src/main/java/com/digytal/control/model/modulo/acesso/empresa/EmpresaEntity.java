@@ -12,4 +12,5 @@ import javax.persistence.Table;
 @Data
 public class EmpresaEntity extends EntidadeCadastral {
     //private String localiza;
+    private EmpresaIntegracao integracao = new EmpresaIntegracao();
 }

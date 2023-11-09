@@ -21,11 +21,11 @@ public abstract class AbstractService {
     private FormaPagamentoRepository formaPagamentoRepository;
     @Autowired
     protected GlobalRepository globalRepository;
-    protected FormaPagamentoEntity consultarFormaPagamento(MeioPagamento meioPagamento){
-        return consultarFormaPagamento(meioPagamento, 1);
+    protected FormaPagamentoEntity consultarFormaPagamento(Integer empresa, MeioPagamento meioPagamento){
+        return consultarFormaPagamento(empresa, meioPagamento, 1);
     }
-    protected FormaPagamentoEntity consultarFormaPagamento(MeioPagamento meioPagamento, Integer numeroParcelas){
-        FormaPagamentoEntity formaPagamento = formaPagamentoRepository.findByEmpresaAndMeioPagamentoAndNumeroParcelas(requestInfo.getEmpresa(),meioPagamento,numeroParcelas);
+    protected FormaPagamentoEntity consultarFormaPagamento(Integer empresa, MeioPagamento meioPagamento, Integer numeroParcelas){
+        FormaPagamentoEntity formaPagamento = formaPagamentoRepository.findByEmpresaAndMeioPagamentoAndNumeroParcelas(empresa,meioPagamento,numeroParcelas);
         if(formaPagamento==null)
             throw new RegistroIncompativelException("O meio de pagamento " + meioPagamento.getDescricao() + " não se encontra vinculado a nenhuma conta empresa");
         return  formaPagamento;

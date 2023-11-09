@@ -32,4 +32,19 @@ public class EmpresaResource {
     public Response incluirEmpresa(@RequestBody EmpresaRequest request){
         return ResponseFactory.create(service.incluir(request),"Empresa registrada com sucesso");
     }
+    @PatchMapping("/asaas/token/{token}")
+    public Response alterarAsaasToken(@PathVariable("token") String token){
+        service.alterarAsaasToken(token);
+        return ResponseFactory.ok(true,"Alteração do Token realizada com sucesso");
+    }
+    @PatchMapping("/asaas/webhook-token/{token}")
+    public Response alterarAsaasWebHookToken(@PathVariable("token") String token){
+        service.alterarAsaasWebhookToken(token);
+        return ResponseFactory.ok(true,"Alteração do WebHookToken realizada com sucesso");
+    }
+    @PatchMapping("/asaas/taxa-boleto/{taxa}")
+    public Response alterarAsaasTaxaBoleto(@PathVariable("taxa") Double taxa){
+        service.alterarAsaasTaxaBoleto(taxa);
+        return ResponseFactory.ok(true,"Alteração da taxa de boleto realizada com sucesso");
+    }
 }

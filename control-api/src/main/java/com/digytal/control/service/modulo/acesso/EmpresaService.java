@@ -10,6 +10,7 @@ import com.digytal.control.infra.security.jwt.JwtObject;
 import com.digytal.control.infra.security.jwt.SecurityConfig;
 import com.digytal.control.infra.utils.Textos;
 import com.digytal.control.model.modulo.acesso.empresa.EmpresaEntity;
+import com.digytal.control.model.modulo.acesso.empresa.EmpresaIntegracao;
 import com.digytal.control.model.modulo.acesso.empresa.EmpresaRequest;
 import com.digytal.control.model.modulo.acesso.empresa.EmpresaResponse;
 import com.digytal.control.model.comum.EntidadeCadastral;
@@ -28,9 +29,32 @@ public class EmpresaService extends CadastroFactory {
     public List<EmpresaSimplificadaResponse> listarUsuarioEmpresas(){
         return empresaRepository.listarEmpresas(requestInfo.getUsuario());
     }
+    @Transactional
+    public void alterarAsaasToken(String token){
+        EmpresaEntity empresaEntity = buscarEntity(requestInfo.getEmpresa());
+        empresaEntity.getIntegracao().setAsaasToken(token);
+        empresaEntity.getIntegracao().setContaEmpresa(true);
+        empresaRepository.save(empresaEntity);
+    }
+    @Transactional
+    public void alterarAsaasWebhookToken(String webhookToken){
+        EmpresaEntity empresaEntity = buscarEntity(requestInfo.getEmpresa());
+        empresaEntity.getIntegracao().setAsaasWebhookToken(webhookToken);
+        empresaRepository.save(empresaEntity);
+    }
+    @Transactional
+    public void alterarAsaasTaxaBoleto(Double taxaEmissaoBoleto){
+        EmpresaEntity empresaEntity = buscarEntity(requestInfo.getEmpresa());
+        empresaEntity.getIntegracao().setAsaasTaxaEmissaoBoleto(taxaEmissaoBoleto);
+        empresaRepository.save(empresaEntity);
+    }
+
+    private EmpresaEntity buscarEntity(Integer id){
+        return  empresaRepository.findById(id).orElseThrow(()->new RegistroNaoLocalizadoException(Entities.EMPRESA_ENTITY, ID));
+    }
 
     public EmpresaResponse buscar(Integer id){
-        EmpresaEntity entity = empresaRepository.findById(id).orElseThrow(()->new RegistroNaoLocalizadoException(Entities.EMPRESA_ENTITY, ID));
+        EmpresaEntity entity = buscarEntity(id);
         EmpresaResponse response = new EmpresaResponse();
         BeanUtils.copyProperties(entity,response);
         return response;

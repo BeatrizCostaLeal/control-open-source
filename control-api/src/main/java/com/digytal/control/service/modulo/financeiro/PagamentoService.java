@@ -27,24 +27,27 @@ public class PagamentoService extends AbstractService {
     @Autowired
     private PagamentoRepository repository;
     public void criarPagamentoParcelamento(AplicacaoTipo tipo, FormaPagamentoRequest rateio, String descricao, Integer parcelamento, TransacaoEntity transacao){
-        PagamentoEntity entity = criarPagamento(tipo, transacao.getPartes().getCadastro(), rateio, descricao);
+        PagamentoEntity entity = criarPagamento(tipo, transacao.getPartes().getCadastro(), rateio, descricao, transacao.getPartes().getEmpresa());
         entity.setParcelamento(parcelamento);
         entity.setTransacao(transacao.getId());
         repository.save(entity);
     }
-
-    public PagamentoEntity criarPagamento(AplicacaoTipo tipo, Integer cadastro, FormaPagamentoRequest rateio, String descricao){
+    private void gravarPagamento(AplicacaoTipo tipo, Integer cadastro, FormaPagamentoRequest rateio, String descricao,Integer empresa){
+        PagamentoEntity pagamento = criarPagamento(tipo,cadastro, rateio, descricao,empresa);
+        repository.save(pagamento);
+    }
+    public PagamentoEntity criarPagamento(AplicacaoTipo tipo, Integer cadastro, FormaPagamentoRequest rateio, String descricao,Integer empresa){
         Double valor = rateio.getValorPago();
         MeioPagamento meioPagamento = rateio.getMeioPagamento();
         PagamentoEntity entity = new PagamentoEntity();
         entity.setDescricao(descricao);
         entity.setMeioPagamento(meioPagamento);
-        atualizarSaldoConta(tipo, meioPagamento, valor, entity);
+        atualizarSaldoConta(tipo, meioPagamento, valor, entity, empresa);
         entity.setCadastro(cadastro);
         return  entity;
     }
-    private void atualizarSaldoConta(AplicacaoTipo tipo, MeioPagamento meioPagamento, Double valor, PagamentoEntity entity){
-        FormaPagamentoEntity formaPagamento = consultarFormaPagamento(meioPagamento);
+    private void atualizarSaldoConta(AplicacaoTipo tipo, MeioPagamento meioPagamento, Double valor, PagamentoEntity entity, Integer empresa){
+        FormaPagamentoEntity formaPagamento = consultarFormaPagamento(empresa, meioPagamento);
 
         ContaEntity conta = contaRepository.findById(formaPagamento.getConta()).orElseThrow(()-> new RegistroNaoLocalizadoException(Entities.EMPRESA_CONTA_ENTITY, ID));
         if(tipo == AplicacaoTipo.DESPESA &&  valor > conta.getSaldo())

@@ -251,7 +251,7 @@ public class StringSQL {
             }
         }
         sql.append(this.order);
-        System.out.println("Gerando SQL " + sql.toString());
+        //System.out.println("Gerando SQL " + sql.toString());
         return sql.toString();
     }
     private void addCondition(String field, String logic){

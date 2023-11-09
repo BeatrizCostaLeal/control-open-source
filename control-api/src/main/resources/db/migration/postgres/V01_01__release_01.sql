@@ -93,6 +93,11 @@ CREATE TABLE apl_acesso.tab_empresa (
 	organizacao_id              int4                            NOT NULL,
 	ativ_com_prof               varchar(100)                        NULL,
 	is_incompleto               bool                            NOT NULL,
+	asaas_is_conta_empresa      bool                            NOT NULL,
+	asaas_token                 varchar(250)                        NULL,
+	asaas_webhook_token         varchar(30)                         NULL,
+	asaas_tx_emissao_boleto     numeric(5,2)                        NULL,
+	asaas_tx_emissao_pix        numeric(5,2)                        NULL,
 	CONSTRAINT pk_acessos_empresa                               PRIMARY KEY (id)
 );
 
@@ -439,20 +444,26 @@ CREATE TABLE apl_financeiro.tab_parcelamento_parcela (
 	observacao                  varchar(150)                        NULL,
 	parc_lancto_id              int4                                NULL,
 	bol_is_solicitado           bool                            NOT NULL,
+	bol_repasse_tipo            char(1)                             NULL,
+	bol_is_repasse_confirmado   bool                            NOT NULL,
     bol_status                  char(1)                             NULL,
     bol_nr_autorizacao          varchar(40)                         NULL,
     bol_url_impressao           varchar(100)                        NULL,
     bol_linha_digitavel         varchar(60)                         NULL,
-    bol_vl_compensado           numeric(9,2)                        NULL,
+    bol_vl_original             numeric(10,2)                       NULL,
+    bol_vl_tx_impressao         numeric(5,2)                        NULL,
+    bol_vl_impresso             numeric(10,2)                       NULL,
+    bol_vl_compensado           numeric(10,2)                       NULL,
+    bol_tipo_compensacao        varchar(30)                         NULL,
     bol_dt_pagamento            date                                NULL,
     bol_dt_compensacao          date                                NULL,
 	CONSTRAINT pk_finaceiro_lancto_parcela                    PRIMARY KEY (id),
-	CONSTRAINT fk_financeiro_lancto_parc_lancto                FOREIGN KEY (parc_lancto_id)            REFERENCES apl_financeiro.tab_parcelamento(id)
-
+	CONSTRAINT fk_financeiro_lancto_parc_lancto               FOREIGN KEY (parc_lancto_id)            REFERENCES apl_financeiro.tab_parcelamento(id)
 );
+
 CREATE TABLE apl_financeiro.tab_parcelamento_parcela_pagto (
 	id                          serial4                         NOT NULL,
-	cpt_competencia         int4                            NOT NULL,
+	cpt_competencia         int4                                NOT NULL,
 	dt_pagto                    date                            NOT NULL,
 	valor                       numeric(9,2)                    NOT NULL,
 	meio_pagto                  char(1)                         NOT NULL,
