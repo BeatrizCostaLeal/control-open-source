@@ -10,7 +10,6 @@ import com.digytal.control.infra.security.jwt.JwtObject;
 import com.digytal.control.infra.security.jwt.SecurityConfig;
 import com.digytal.control.infra.utils.Textos;
 import com.digytal.control.model.modulo.acesso.empresa.EmpresaEntity;
-import com.digytal.control.model.modulo.acesso.empresa.EmpresaIntegracao;
 import com.digytal.control.model.modulo.acesso.empresa.EmpresaRequest;
 import com.digytal.control.model.modulo.acesso.empresa.EmpresaResponse;
 import com.digytal.control.model.comum.EntidadeCadastral;

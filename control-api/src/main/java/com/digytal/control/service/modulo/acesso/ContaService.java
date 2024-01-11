@@ -3,7 +3,6 @@ package com.digytal.control.service.modulo.acesso;
 import com.digytal.control.infra.business.RegistroDuplicadoException;
 import com.digytal.control.infra.business.RegistroIncompativelException;
 import com.digytal.control.infra.business.RegistroNaoLocalizadoException;
-import com.digytal.control.infra.commons.validation.Entities;
 import com.digytal.control.infra.commons.validation.Validations;
 import com.digytal.control.model.modulo.acesso.empresa.conta.ContaEntity;
 import com.digytal.control.model.modulo.acesso.empresa.conta.ContaRequest;
@@ -12,9 +11,6 @@ import com.digytal.control.model.modulo.acesso.empresa.pagamento.FormaPagamentoE
 import com.digytal.control.model.modulo.acesso.empresa.pagamento.FormaPagamentoCadastroRequest;
 import com.digytal.control.model.modulo.acesso.empresa.pagamento.FormaPagamentoCadastroResponse;
 import com.digytal.control.model.comum.MeioPagamento;
-import com.digytal.control.model.modulo.cadastro.CadastroResponse;
-import com.digytal.control.model.modulo.cadastro.produto.ProdutoEntity;
-import com.digytal.control.model.modulo.cadastro.produto.ProdutoResponse;
 import com.digytal.control.repository.modulo.acesso.empresa.ContaRepository;
 import com.digytal.control.repository.modulo.acesso.empresa.FormaPagamentoRepository;
 import com.digytal.control.service.comum.AbstractService;

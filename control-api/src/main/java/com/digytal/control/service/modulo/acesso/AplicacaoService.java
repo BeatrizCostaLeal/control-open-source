@@ -1,4 +1,5 @@
 package com.digytal.control.service.modulo.acesso;
+
 import com.digytal.control.infra.business.BusinessException;
 import com.digytal.control.infra.business.CampoObrigatorioException;
 import com.digytal.control.infra.business.ErroNaoMapeadoException;

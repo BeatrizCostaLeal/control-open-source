@@ -19,6 +19,7 @@ import com.digytal.control.infra.model.SessaoResponse;
 import com.digytal.control.model.modulo.acesso.usuario.SenhaAlteracaoRequest;
 import com.digytal.control.model.modulo.acesso.usuario.UsuarioEntity;
 import com.digytal.control.repository.modulo.acesso.UsuarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

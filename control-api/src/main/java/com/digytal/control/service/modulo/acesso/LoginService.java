@@ -1,6 +1,5 @@
 package com.digytal.control.service.modulo.acesso;
 
-
 import com.digytal.control.infra.business.login.LoginException;
 import com.digytal.control.infra.business.login.SenhaExpiradaException;
 import com.digytal.control.infra.business.login.UsuarioBloqueadoException;

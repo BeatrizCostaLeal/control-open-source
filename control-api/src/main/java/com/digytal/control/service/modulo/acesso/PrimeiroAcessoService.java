@@ -20,6 +20,7 @@ import com.digytal.control.repository.modulo.acesso.empresa.AplicacaoRepository;
 import com.digytal.control.repository.modulo.acesso.empresa.ContaRepository;
 import com.digytal.control.repository.modulo.acesso.empresa.FormaPagamentoRepository;
 import com.digytal.control.service.comum.CadastroFactory;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
